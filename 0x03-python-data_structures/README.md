@@ -42,7 +42,8 @@ This is a Python Project done during **Full Stack Software Engineering studies**
 •	All your header files should be include guarded
 
 ## Files
-All of the following files are programs written in C:
+
+All of the following files are programs written in python and C:
 
 | Filename | Description |
 | -------- | ----------- |
