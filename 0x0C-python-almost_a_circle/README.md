@@ -1,46 +1,54 @@
-## 0x0C. Python - Almost a circle
-GENERAL 📖📖📖:
-What is Unit testing and how to implement it in a large project
-How to serialize and deserialize a Class
-How to write and read a JSON file
-What is *args and how to use it
-What is **kwargs and how to use it
-How to handle named arguments in a function
-RESOURCES:
-args/kwargs
-JSON encoder and decoder
-unittest module
-Python test cheatsheet
-INTRODUCTION TO FILES 📕📕📕:
-models/rectangle.py: Write the class Rectangle that inherits from BaseWhy private attributes with getter/setter? Why not directly public attribute?Because we want to protect attributes of our class. With a setter, you are able to validate what a developer is trying to assign to a variable. So after, in your class you can “trust” these attributes.
-models/rectangle.py: Update the class Rectangle by adding validation of all setter methods and instantiation (id excluded)
-models/rectangle.py: Update the class Rectangle by adding the public method def area(self) that returns the area value of the Rectangle instance.
-models/rectangle.py: Update the class Rectangle by adding the public method def display(self) that prints in stdout the Rectangle instance with the character # - you don’t need to handle x and y here.
-models/rectangle.py: Update the class Rectangle by overriding the str method so that it returns [Rectangle] (<id>) <x>/<y> - <width>/<height>
-models/rectangle.py: Update the class Rectangle by improving the public method def display(self) to print in stdout the Rectangle instance with the character # by taking care of x and y
-models/rectangle.py: Update the class Rectangle by adding the public method def update(self, *args) that assigns an argument to each attributeThis type of argument is called a “no-keyword argument” - Argument order is super important.
-models/rectangle.py: Update the class Rectangle by updating the public method def update(self, *args) by changing the prototype to update(self, *args, **kwargs) that assigns a key/value argument to attributesThis type of argument is called a “key-worded argument”. Argument order is not important.
-models/square.py: Write the class Square that inherits from RectangleAs you know, a Square is a special Rectangle, so it makes sense this class Square inherits from Rectangle. Now you have a Square class who has the same attributes and same methods.
-models/square.py: Update the class Square by adding the public getter and setter size
-models/square.py: Update the class Square by adding the public method def update(self, *args, **kwargs) that assigns attributes
-models/rectangle.py: Update the class Rectangle by adding the public method def to_dictionary(self) that returns the dictionary representation of a RectangleThis dictionary must contain
-models/square.py: Update the class Square by adding the public method def to_dictionary(self) that returns the dictionary representation of a SquareThis dictionary must contain
-models/base.py: JSON is one of the standard formats for sharing data representation.Update the class Base by adding the static method def to_json_string(list_dictionaries) that returns the JSON string representation of list_dictionaries
-models/base.py: Update the class Base by adding the class method def save_to_file(cls, list_objs) that writes the JSON string representation of list_objs to a file
-models/base.py: Update the class Base by adding the static method def from_json_string(json_string) that returns the list of the JSON string representation json_string
-models/base.py: Update the class Base by adding the class method def create(cls, **dictionary) that returns an instance with all attributes already set
-models/base.py: Update the class Base by adding the class method def load_from_file(cls) that returns a list of instances
-models/: Update the class Base by adding the class methods def save_to_file_csv(cls, list_objs) and def load_from_file_csv(cls) that serializes and deserializes in CSV
-FILES 📑📑📑:
-models/rectangle.py
+# 0x0C. Python - Almost a circle
 
-Write the class Rectangle that inherits from Base
+## GENERAL :open_book::open_book::open_book::
 
-Why private attributes with getter/setter? Why not directly public attribute?
+ <ol>
+	<li>What is Unit testing and how to implement it in a large project</li>
+	<li>How to serialize and deserialize a Class</li>
+	<li>How to write and read a JSON file</li>
+	<li>What is <code>*args</code> and how to use it</li>
+	<li>What is <code>**kwargs</code> and how to use it</li>
+	<li>How to handle named arguments in a function</li>
+</ol>
 
-Because we want to protect attributes of our class. With a setter, you are able to validate what a developer is trying to assign to a variable. So after, in your class you can “trust” these attributes.
+## RESOURCES:
 
-guillaume@ubuntu:~/$ cat 1-main.py
+ <ol>
+	<li><a href="/rltoken/LroIjBBI5Gqq3ciR-OHmxg" title="args/kwargs" target="_blank">args/kwargs</a> </li>
+	<li><a href="/rltoken/TY4rfu2AZtXlRmPVNZm1Lw" title="JSON encoder and decoder" target="_blank">JSON encoder and decoder</a> </li>
+	<li><a href="/rltoken/T7uxwxtGdbRRW9pkD4eO0g" title="unittest module" target="_blank">unittest module</a> </li>
+	<li><a href="/rltoken/SfEo3RQeAXXYI9yabFRw3g" title="Python test cheatsheet" target="_blank">Python test cheatsheet</a> </li>
+</ol>
+
+## INTRODUCTION TO FILES :closed_book::closed_book::closed_book::
+
+0.	[**models/rectangle.py**:](#modelsrectanglepy) Write the class <code>Rectangle</code> that inherits from <code>Base</code>Why private attributes with getter/setter? Why not directly public attribute?Because we want to protect attributes of our class. With a setter, you are able to validate what a developer is trying to assign to a variable. So after, in your class you can “trust” these attributes.
+1.	[**models/rectangle.py**:](#modelsrectanglepy) Update the class <code>Rectangle</code> by adding validation of all setter methods and instantiation (<code>id</code> excluded)
+2.	[**models/rectangle.py**:](#modelsrectanglepy) Update the class <code>Rectangle</code> by adding the public method <code>def area(self)</code> that returns the area value of the <code>Rectangle</code> instance.
+3.	[**models/rectangle.py**:](#modelsrectanglepy) Update the class <code>Rectangle</code> by adding the public method <code>def display(self)</code> that prints in stdout the <code>Rectangle</code> instance with the character <code>#</code> - you don’t need to handle <code>x</code> and <code>y</code> here.
+4.	[**models/rectangle.py**:](#modelsrectanglepy) Update the class <code>Rectangle</code> by overriding the <code>__str__</code> method so that it returns <code>[Rectangle] (&lt;id&gt;) &lt;x&gt;/&lt;y&gt; - &lt;width&gt;/&lt;height&gt;</code>
+5.	[**models/rectangle.py**:](#modelsrectanglepy) Update the class <code>Rectangle</code> by improving the public method <code>def display(self)</code> to print in stdout the <code>Rectangle</code> instance with the character <code>#</code> by taking care of <code>x</code> and <code>y</code>
+6.	[**models/rectangle.py**:](#modelsrectanglepy) Update the class <code>Rectangle</code> by adding the public method <code>def update(self, *args)</code> that assigns an argument to each attributeThis type of argument is called a “no-keyword argument” - Argument order is super important.
+7.	[**models/rectangle.py**:](#modelsrectanglepy) Update the class <code>Rectangle</code> by updating the public method <code>def update(self, *args)</code> by changing the prototype to <code>update(self, *args, **kwargs)</code> that assigns a key/value argument to attributesThis type of argument is called a “key-worded argument”. Argument order is not important.
+8.	[**models/square.py**:](#modelssquarepy) Write the class <code>Square</code> that inherits from <code>Rectangle</code>As you know, a Square is a special Rectangle, so it makes sense this class Square inherits from Rectangle. Now you have a Square class who has the same attributes and same methods.
+9.	[**models/square.py**:](#modelssquarepy) Update the class <code>Square</code> by adding the public getter and setter <code>size</code>
+10.	[**models/square.py**:](#modelssquarepy) Update the class <code>Square</code> by adding the public method <code>def update(self, *args, **kwargs)</code> that assigns attributes
+11.	[**models/rectangle.py**:](#modelsrectanglepy) Update the class <code>Rectangle</code> by adding the public method <code>def to_dictionary(self)</code> that returns the dictionary representation of a <code>Rectangle</code>This dictionary must contain
+12.	[**models/square.py**:](#modelssquarepy) Update the class <code>Square</code> by adding the public method <code>def to_dictionary(self)</code> that returns the dictionary representation of a <code>Square</code>This dictionary must contain
+13.	[**models/base.py**:](#modelsbasepy) JSON is one of the standard formats for sharing data representation.Update the class <code>Base</code> by adding the static method <code>def to_json_string(list_dictionaries)</code> that returns the JSON string representation of <code>list_dictionaries</code>
+14.	[**models/base.py**:](#modelsbasepy) Update the class <code>Base</code> by adding the class method <code>def save_to_file(cls, list_objs)</code> that writes the JSON string representation of <code>list_objs</code> to a file
+15.	[**models/base.py**:](#modelsbasepy) Update the class <code>Base</code> by adding the static method <code>def from_json_string(json_string)</code> that returns the list of the JSON string representation <code>json_string</code>
+16.	[**models/base.py**:](#modelsbasepy) Update the class <code>Base</code> by adding the class method <code>def create(cls, **dictionary)</code> that returns an instance with all attributes already set
+17.	[**models/base.py**:](#modelsbasepy) Update the class <code>Base</code> by adding the class method <code>def load_from_file(cls)</code> that returns a list of instances
+18.	[**models/**:](#models) Update the class <code>Base</code> by adding the class methods <code>def save_to_file_csv(cls, list_objs)</code> and <code>def load_from_file_csv(cls)</code> that serializes and deserializes in CSV
+
+## FILES :bookmark_tabs::bookmark_tabs::bookmark_tabs::
+
+### models/rectangle.py
+
+**<p>Write the class <code>Rectangle</code> that inherits from <code>Base</code></p><p>Why private attributes with getter/setter? Why not directly public attribute?</p><p>Because we want to protect attributes of our class. With a setter, you are able to validate what a developer is trying to assign to a variable. So after, in your class you can “trust” these attributes.</p>**
+
+<pre><code>guillaume@ubuntu:~/$ cat 1-main.py
 #!/usr/bin/python3
 """ 1-main """
 from models.rectangle import Rectangle
@@ -61,11 +69,13 @@ guillaume@ubuntu:~/$ ./1-main.py
 2
 12
 guillaume@ubuntu:~/$ 
-models/rectangle.py
+</code></pre>
 
-Update the class Rectangle by adding validation of all setter methods and instantiation (id excluded)
+### models/rectangle.py
 
-guillaume@ubuntu:~/$ cat 2-main.py
+**<p>Update the class <code>Rectangle</code> by adding validation of all setter methods and instantiation (<code>id</code> excluded)</p>**
+
+<pre><code>guillaume@ubuntu:~/$ cat 2-main.py
 #!/usr/bin/python3
 """ 2-main """
 from models.rectangle import Rectangle
@@ -96,15 +106,17 @@ if __name__ == "__main__":
 
 guillaume@ubuntu:~/$ ./2-main.py
 [TypeError] height must be an integer
-[ValueError] width must be > 0
+[ValueError] width must be &gt; 0
 [TypeError] x must be an integer
-[ValueError] y must be >= 0
+[ValueError] y must be &gt;= 0
 guillaume@ubuntu:~/$ 
-models/rectangle.py
+</code></pre>
 
-Update the class Rectangle by adding the public method def area(self) that returns the area value of the Rectangle instance.
+### models/rectangle.py
 
-guillaume@ubuntu:~/$ cat 3-main.py
+**<p>Update the class <code>Rectangle</code> by adding the public method <code>def area(self)</code> that returns the area value of the <code>Rectangle</code> instance.</p>**
+
+<pre><code>guillaume@ubuntu:~/$ cat 3-main.py
 #!/usr/bin/python3
 """ 3-main """
 from models.rectangle import Rectangle
@@ -125,11 +137,13 @@ guillaume@ubuntu:~/$ ./3-main.py
 20
 56
 guillaume@ubuntu:~/$ 
-models/rectangle.py
+</code></pre>
 
-Update the class Rectangle by adding the public method def display(self) that prints in stdout the Rectangle instance with the character # - you don’t need to handle x and y here.
+### models/rectangle.py
 
-guillaume@ubuntu:~/$ cat 4-main.py
+**<p>Update the class <code>Rectangle</code> by adding the public method <code>def display(self)</code> that prints in stdout the <code>Rectangle</code> instance with the character <code>#</code> - you don’t need to handle <code>x</code> and <code>y</code> here.</p>**
+
+<pre><code>guillaume@ubuntu:~/$ cat 4-main.py
 #!/usr/bin/python3
 """ 4-main """
 from models.rectangle import Rectangle
@@ -155,11 +169,13 @@ guillaume@ubuntu:~/$ ./4-main.py
 ##
 ##
 guillaume@ubuntu:~/$ 
-models/rectangle.py
+</code></pre>
 
-Update the class Rectangle by overriding the str method so that it returns [Rectangle] (<id>) <x>/<y> - <width>/<height>
+### models/rectangle.py
 
-guillaume@ubuntu:~/$ cat 5-main.py
+**<p>Update the class <code>Rectangle</code> by overriding the <code>__str__</code> method so that it returns <code>[Rectangle] (&lt;id&gt;) &lt;x&gt;/&lt;y&gt; - &lt;width&gt;/&lt;height&gt;</code></p>**
+
+<pre><code>guillaume@ubuntu:~/$ cat 5-main.py
 #!/usr/bin/python3
 """ 5-main """
 from models.rectangle import Rectangle
@@ -176,11 +192,13 @@ guillaume@ubuntu:~/$ ./5-main.py
 [Rectangle] (12) 2/1 - 4/6
 [Rectangle] (1) 1/0 - 5/5
 guillaume@ubuntu:~/$ 
-models/rectangle.py
+</code></pre>
 
-Update the class Rectangle by improving the public method def display(self) to print in stdout the Rectangle instance with the character # by taking care of x and y
+### models/rectangle.py
 
-guillaume@ubuntu:~/$ cat 6-main.py
+**<p>Update the class <code>Rectangle</code> by improving the public method <code>def display(self)</code> to print in stdout the <code>Rectangle</code> instance with the character <code>#</code> by taking care of <code>x</code> and <code>y</code></p>**
+
+<pre><code>guillaume@ubuntu:~/$ cat 6-main.py
 #!/usr/bin/python3
 """ 6-main """
 from models.rectangle import Rectangle
@@ -205,14 +223,13 @@ $
  ###$
  ###$
 guillaume@ubuntu:~/$ 
-models/rectangle.py
-*
+</code></pre>
 
-Update the class Rectangle by adding the public method def update(self, args) that assigns an argument to each attribute
+### models/rectangle.py
 
-This type of argument is called a “no-keyword argument” - Argument order is super important.
+**<p>Update the class <code>Rectangle</code> by adding the public method <code>def update(self, *args)</code> that assigns an argument to each attribute</p><p>This type of argument is called a “no-keyword argument” - Argument order is super important.</p>**
 
-guillaume@ubuntu:~/$ cat 7-main.py
+<pre><code>guillaume@ubuntu:~/$ cat 7-main.py
 #!/usr/bin/python3
 """ Doc """
 from models.rectangle import Rectangle
@@ -245,14 +262,13 @@ guillaume@ubuntu:~/$ ./7-main.py
 [Rectangle] (89) 4/10 - 2/3
 [Rectangle] (89) 4/5 - 2/3
 guillaume@ubuntu:~/$ 
-models/rectangle.py
-**
+</code></pre>
 
-Update the class Rectangle by updating the public method def update(self, *args) by changing the prototype to update(self, *args, kwargs) that assigns a key/value argument to attributes
+### models/rectangle.py
 
-This type of argument is called a “key-worded argument”. Argument order is not important.
+**<p>Update the class <code>Rectangle</code> by updating the public method <code>def update(self, *args)</code> by changing the prototype to <code>update(self, *args, **kwargs)</code> that assigns a key/value argument to attributes</p><p>This type of argument is called a “key-worded argument”. Argument order is not important.</p>**
 
-guillaume@ubuntu:~/$ cat 8-main.py
+<pre><code>guillaume@ubuntu:~/$ cat 8-main.py
 #!/usr/bin/python3
 """ 8-main """
 from models.rectangle import Rectangle
@@ -281,13 +297,13 @@ guillaume@ubuntu:~/$ ./8-main.py
 [Rectangle] (89) 3/1 - 2/1
 [Rectangle] (89) 1/3 - 4/2
 guillaume@ubuntu:~/$ 
-models/square.py
+</code></pre>
 
-Write the class Square that inherits from Rectangle
+### models/square.py
 
-As you know, a Square is a special Rectangle, so it makes sense this class Square inherits from Rectangle. Now you have a Square class who has the same attributes and same methods.
+**<p>Write the class <code>Square</code> that inherits from <code>Rectangle</code></p><p>As you know, a Square is a special Rectangle, so it makes sense this class Square inherits from Rectangle. Now you have a Square class who has the same attributes and same methods.</p>**
 
-guillaume@ubuntu:~/$ cat 9-main.py
+<pre><code>guillaume@ubuntu:~/$ cat 9-main.py
 #!/usr/bin/python3
 """ 9-main """
 from models.square import Square
@@ -336,11 +352,13 @@ guillaume@ubuntu:~/$ ./9-main.py
  ###
  ###
 guillaume@ubuntu:~/$ 
-models/square.py
+</code></pre>
 
-Update the class Square by adding the public getter and setter size
+### models/square.py
 
-guillaume@ubuntu:~/$ cat 10-main.py
+**<p>Update the class <code>Square</code> by adding the public getter and setter <code>size</code></p>**
+
+<pre><code>guillaume@ubuntu:~/$ cat 10-main.py
 #!/usr/bin/python3
 """ 10-main """
 from models.square import Square
@@ -364,12 +382,13 @@ guillaume@ubuntu:~/$ ./10-main.py
 [Square] (1) 0/0 - 10
 [TypeError] width must be an integer
 guillaume@ubuntu:~/$ 
-models/square.py
-**
+</code></pre>
 
-Update the class Square by adding the public method def update(self, *args, kwargs) that assigns attributes
+### models/square.py
 
-guillaume@ubuntu:~/$ cat 11-main.py
+**<p>Update the class <code>Square</code> by adding the public method <code>def update(self, *args, **kwargs)</code> that assigns attributes</p>**
+
+<pre><code>guillaume@ubuntu:~/$ cat 11-main.py
 #!/usr/bin/python3
 """ 11-main """
 from models.square import Square
@@ -410,13 +429,13 @@ guillaume@ubuntu:~/$ ./11-main.py
 [Square] (1) 12/1 - 7
 [Square] (89) 12/1 - 7
 guillaume@ubuntu:~/$ 
-models/rectangle.py
+</code></pre>
 
-Update the class Rectangle by adding the public method def to_dictionary(self) that returns the dictionary representation of a Rectangle
+### models/rectangle.py
 
-This dictionary must contain
+**<p>Update the class <code>Rectangle</code> by adding the public method <code>def to_dictionary(self)</code> that returns the dictionary representation of a <code>Rectangle</code></p><p>This dictionary must contain</p>**
 
-guillaume@ubuntu:~/$ cat 12-main.py
+<pre><code>guillaume@ubuntu:~/$ cat 12-main.py
 #!/usr/bin/python3
 """ 12-main """
 from models.rectangle import Rectangle
@@ -438,18 +457,18 @@ if __name__ == "__main__":
 guillaume@ubuntu:~/$ ./12-main.py
 [Rectangle] (1) 1/9 - 10/2
 {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
-<class 'dict'>
+&lt;class 'dict'&gt;
 [Rectangle] (2) 0/0 - 1/1
 [Rectangle] (1) 1/9 - 10/2
 False
 guillaume@ubuntu:~/$ 
-models/square.py
+</code></pre>
 
-Update the class Square by adding the public method def to_dictionary(self) that returns the dictionary representation of a Square
+### models/square.py
 
-This dictionary must contain
+**<p>Update the class <code>Square</code> by adding the public method <code>def to_dictionary(self)</code> that returns the dictionary representation of a <code>Square</code></p><p>This dictionary must contain</p>**
 
-guillaume@ubuntu:~/$ cat 13-main.py
+<pre><code>guillaume@ubuntu:~/$ cat 13-main.py
 #!/usr/bin/python3
 """ 13-main """
 from models.square import Square
@@ -471,18 +490,18 @@ if __name__ == "__main__":
 guillaume@ubuntu:~/$ ./13-main.py
 [Square] (1) 2/1 - 10
 {'id': 1, 'x': 2, 'size': 10, 'y': 1}
-<class 'dict'>
+&lt;class 'dict'&gt;
 [Square] (2) 1/0 - 1
 [Square] (1) 2/1 - 10
 False
 guillaume@ubuntu:~/$ 
-models/base.py
+</code></pre>
 
-JSON is one of the standard formats for sharing data representation.
+### models/base.py
 
-Update the class Base by adding the static method def to_json_string(list_dictionaries) that returns the JSON string representation of list_dictionaries
+**<p>JSON is one of the standard formats for sharing data representation.</p><p>Update the class <code>Base</code> by adding the static method <code>def to_json_string(list_dictionaries)</code> that returns the JSON string representation of <code>list_dictionaries</code></p>**
 
-guillaume@ubuntu:~/$ cat 14-main.py
+<pre><code>guillaume@ubuntu:~/$ cat 14-main.py
 #!/usr/bin/python3
 """ 14-main """
 from models.base import Base
@@ -500,15 +519,17 @@ if __name__ == "__main__":
 
 guillaume@ubuntu:~/$ ./14-main.py
 {'x': 2, 'width': 10, 'id': 1, 'height': 7, 'y': 8}
-<class 'dict'>
+&lt;class 'dict'&gt;
 [{"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}]
-<class 'str'>
+&lt;class 'str'&gt;
 guillaume@ubuntu:~/$ 
-models/base.py
+</code></pre>
 
-Update the class Base by adding the class method def save_to_file(cls, list_objs) that writes the JSON string representation of list_objs to a file
+### models/base.py
 
-guillaume@ubuntu:~/$ cat 15-main.py
+**<p>Update the class <code>Base</code> by adding the class method <code>def save_to_file(cls, list_objs)</code> that writes the JSON string representation of <code>list_objs</code> to a file</p>**
+
+<pre><code>guillaume@ubuntu:~/$ cat 15-main.py
 #!/usr/bin/python3
 """ 15-main """
 from models.rectangle import Rectangle
@@ -525,11 +546,13 @@ if __name__ == "__main__":
 guillaume@ubuntu:~/$ ./15-main.py
 [{"y": 8, "x": 2, "id": 1, "width": 10, "height": 7}, {"y": 0, "x": 0, "id": 2, "width": 2, "height": 4}]
 guillaume@ubuntu:~/$ 
-models/base.py
+</code></pre>
 
-Update the class Base by adding the static method def from_json_string(json_string) that returns the list of the JSON string representation json_string
+### models/base.py
 
-guillaume@ubuntu:~/$ cat 16-main.py
+**<p>Update the class <code>Base</code> by adding the static method <code>def from_json_string(json_string)</code> that returns the list of the JSON string representation <code>json_string</code></p>**
+
+<pre><code>guillaume@ubuntu:~/$ cat 16-main.py
 #!/usr/bin/python3
 """ 16-main """
 from models.rectangle import Rectangle
@@ -547,16 +570,17 @@ if __name__ == "__main__":
     print("[{}] {}".format(type(list_output), list_output))
 
 guillaume@ubuntu:~/$ ./16-main.py
-[<class 'list'>] [{'height': 4, 'width': 10, 'id': 89}, {'height': 7, 'width': 1, 'id': 7}]
-[<class 'str'>] [{"height": 4, "width": 10, "id": 89}, {"height": 7, "width": 1, "id": 7}]
-[<class 'list'>] [{'height': 4, 'width': 10, 'id': 89}, {'height': 7, 'width': 1, 'id': 7}]
+[&lt;class 'list'&gt;] [{'height': 4, 'width': 10, 'id': 89}, {'height': 7, 'width': 1, 'id': 7}]
+[&lt;class 'str'&gt;] [{"height": 4, "width": 10, "id": 89}, {"height": 7, "width": 1, "id": 7}]
+[&lt;class 'list'&gt;] [{'height': 4, 'width': 10, 'id': 89}, {'height': 7, 'width': 1, 'id': 7}]
 guillaume@ubuntu:~/$ 
-models/base.py
-**
+</code></pre>
 
-Update the class Base by adding the class method def create(cls, dictionary) that returns an instance with all attributes already set
+### models/base.py
 
-guillaume@ubuntu:~/$ cat 17-main.py
+**<p>Update the class <code>Base</code> by adding the class method <code>def create(cls, **dictionary)</code> that returns an instance with all attributes already set</p>**
+
+<pre><code>guillaume@ubuntu:~/$ cat 17-main.py
 #!/usr/bin/python3
 """ 17-main """
 from models.rectangle import Rectangle
@@ -577,11 +601,13 @@ guillaume@ubuntu:~/$ ./17-main.py
 False
 False
 guillaume@ubuntu:~/$ 
-models/base.py
+</code></pre>
 
-Update the class Base by adding the class method def load_from_file(cls) that returns a list of instances
+### models/base.py
 
-guillaume@ubuntu:~/$ cat 18-main.py
+**<p>Update the class <code>Base</code> by adding the class method <code>def load_from_file(cls)</code> that returns a list of instances</p>**
+
+<pre><code>guillaume@ubuntu:~/$ cat 18-main.py
 #!/usr/bin/python3
 """ 18-main """
 from models.rectangle import Rectangle
@@ -638,11 +664,13 @@ guillaume@ubuntu:~/$ ./18-main.py
 [139785911764976] [Square] (5) 0/0 - 5
 [139785911765032] [Square] (6) 9/1 - 7
 guillaume@ubuntu:~/$ 
-models/
+</code></pre>
 
-Update the class Base by adding the class methods def save_to_file_csv(cls, list_objs) and def load_from_file_csv(cls) that serializes and deserializes in CSV
+### models/
 
-guillaume@ubuntu:~/$ cat 100-main.py
+**<p>Update the class <code>Base</code> by adding the class methods <code>def save_to_file_csv(cls, list_objs)</code> and <code>def load_from_file_csv(cls)</code> that serializes and deserializes in CSV</p>**
+
+<pre><code>guillaume@ubuntu:~/$ cat 100-main.py
 #!/usr/bin/python3
 """ 100-main """
 from models.rectangle import Rectangle
@@ -698,4 +726,7 @@ guillaume@ubuntu:~/$ ./100-main.py
 ---
 [140268695529232] [Square] (5) 0/0 - 5
 [140268695529176] [Square] (6) 9/1 - 7
-guillaume@ubuntu:~/$
+guillaume@ubuntu:~/$ 
+</code></pre>
+
+
