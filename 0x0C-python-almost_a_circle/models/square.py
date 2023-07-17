@@ -1,51 +1,81 @@
 #!/usr/bin/python3
-"""This module contains a square class"""
-
+"""Defines a square class."""
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """Represents a square"""
+    """Represent a square."""
 
     def __init__(self, size, x=0, y=0, id=None):
+        """Initialize a new Square.
+        Args:
+            size (int): The size of the new Square.
+            x (int): The x coordinate of the new Square.
+            y (int): The y coordinate of the new Square.
+            id (int): The identity of the new Square.
+        """
         super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
-        """Gets the value of size"""
+        """Get/set the size of the Square."""
         return self.width
 
     @size.setter
     def size(self, value):
-        """Sets the value for size"""
-        if not isinstance(value, int):
-            raise TypeError("size must be an integer")
-        if value <= 0:
-            raise ValueError("size must be > 0")
         self.width = value
         self.height = value
 
-    def __str__(self):
-        """Defines a format for the string representation of the class"""
-        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
-
     def update(self, *args, **kwargs):
-        """Updates attributes of an instance"""
-        if args:
-            attributes = ["id", "size", "x", "y"]
-            for index, value in enumerate(args):
-                if index < len(attributes):
-                    setattr(self, attributes[index], value)
-        else:
-            for key, value in kwargs.items():
-                if hasattr(self, key):
-                    setattr(self, key, value)
+        """Update the Square.
+        Args:
+            *args (ints): New attribute values.
+                - 1st argument represents id attribute
+                - 2nd argument represents size attribute
+                - 3rd argument represents x attribute
+                - 4th argument represents y attribute
+            **kwargs (dict): New key/value pairs of attributes.
+        """
+        if args and len(args) != 0:
+            a = 0
+            for arg in args:
+                if a == 0:
+                    if arg is None:
+                        self.__init__(self.size, self.x, self.y)
+                    else:
+                        self.id = arg
+                elif a == 1:
+                    self.size = arg
+                elif a == 2:
+                    self.x = arg
+                elif a == 3:
+                    self.y = arg
+                a += 1
+
+        elif kwargs and len(kwargs) != 0:
+            for k, v in kwargs.items():
+                if k == "id":
+                    if v is None:
+                        self.__init__(self.size, self.x, self.y)
+                    else:
+                        self.id = v
+                elif k == "size":
+                    self.size = v
+                elif k == "x":
+                    self.x = v
+                elif k == "y":
+                    self.y = v
 
     def to_dictionary(self):
-        """Returns the dictionary representation of a Square"""
+        """Return the dictionary representation of the Square."""
         return {
             "id": self.id,
             "size": self.width,
             "x": self.x,
-            "y": self.y,
+            "y": self.y
         }
+
+    def __str__(self):
+        """Return the print() and str() representation of a Square."""
+        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y,
+                                                 self.width)
